@@ -1,1 +1,24 @@
+1. Процент покрытых методов. Нужно вызвать каждый метод каждого класса в отдельном тесте для увеличения покрытия
+Класс Animal
+   public List<String> getFood(String animalKind) throws Exception
+   public String getFamily()
+Класс Cat
+   public Cat(Feline feline)
+   public String getSound()
+   public List<String> getFood() throws Exception
+Класс Feline (кошачий)
+ public List<String> eatMeat() throws Exception
+ public String getFamily()
+ public int getKittens()
+ public int getKittens(int kittensCount)
+Класс Lion
+ public Lion(String sex) throws Exception
+ public int getKittens()
+ public boolean doesHaveMane()
+ public List<String> getFood() throws Exception
 
+2. Процент покрытых условий. Для каждой ветки условия нужно написать отдельный тест.
+ public List<String> getFood(String animalKind) throws Exception - 3 ветки = 3 теста
+ public Lion(String sex) throws Exception - 3 ветки = 3 теста
+
+3. Некоторым веткам ппонадобится параметризированный тест.
