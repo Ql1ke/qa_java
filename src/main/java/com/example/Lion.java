@@ -16,7 +16,15 @@ public class Lion {
         }
     }
 
-    Feline feline = new Feline();
+    Feline feline = new Feline(); //нужно применить DI - инъекцию зависимости для разделения класса LION от FELINE.
+//     47-я минута вебинара от 10.03
+
+/*
+    private Predator predator;
+    public void setPredator(Predator predator) {
+        this.predator = predator;
+    }
+*/
 
     public int getKittens() {
         return feline.getKittens();
