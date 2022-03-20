@@ -21,7 +21,7 @@ public class LionTest {
 
     @Test
     public void doesManeTest() throws Exception {
-        Lion lion = new Lion("Самец");
+        Lion lion = new Lion("Самец", feline);
         boolean expectedMane = true;
         boolean actualMane = lion.doesHaveMane();
         assertEquals(expectedMane, actualMane);
@@ -29,7 +29,7 @@ public class LionTest {
 
     @Test
     public void doesNotManeTest() throws Exception {
-        Lion lion = new Lion("Самка");
+        Lion lion = new Lion("Самка", feline);
         boolean expectedMane = false;
         boolean actualMane = lion.doesHaveMane();
         assertEquals(expectedMane, actualMane);
@@ -37,13 +37,13 @@ public class LionTest {
 
     @Test(expected = Exception.class)
     public void lionExceptionTest() throws Exception {
-        Lion lion = new Lion("Оно");
+        Lion lion = new Lion("Оно", feline);
     }
 
     @Test
     public void lionExceptionStringTest() throws Exception {
         try {
-            Lion lion = new Lion("Оно");
+            Lion lion = new Lion("Оно", feline);
         } catch (Exception e) {
             String expectedString = "Используйте допустимые значения пола животного - самей или самка";
             assertEquals(expectedString, e.getMessage());
@@ -53,8 +53,8 @@ public class LionTest {
 
     @Test
     public void getFoodTest() throws Exception {
-        Lion lion = new Lion("Самец");
-        List<String> expectedMeat = lion.getFood("Хищник");
+        Lion lion = new Lion("Самец", feline);
+        List<String> expectedMeat = feline.getFood("Хищник");
         List<String> actualMeat = lion.getFood();
         assertEquals(expectedMeat, actualMeat);
     }
