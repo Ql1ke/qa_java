@@ -21,7 +21,7 @@ public class LionTest {
 
     @Test
     public void doesManeTest() throws Exception {
-        Lion lion = new Lion("Самец", feline);
+        Lion lion = new Lion("Самец");
         boolean expectedMane = true;
         boolean actualMane = lion.doesHaveMane();
         assertEquals(expectedMane, actualMane);
@@ -29,7 +29,7 @@ public class LionTest {
 
     @Test
     public void doesNotManeTest() throws Exception {
-        Lion lion = new Lion("Самка", feline);
+        Lion lion = new Lion("Самка");
         boolean expectedMane = false;
         boolean actualMane = lion.doesHaveMane();
         assertEquals(expectedMane, actualMane);
@@ -37,15 +37,15 @@ public class LionTest {
 
     @Test(expected = Exception.class)
     public void lionExceptionTest() throws Exception {
-        Lion lion = new Lion("Оно", feline);
+        Lion lion = new Lion("Оно");
     }
 
     @Test
     public void lionExceptionStringTest() throws Exception {
         try {
-            Lion lion = new Lion("Оно", feline);
+            Lion lion = new Lion("Оно");
         } catch (Exception e) {
-            String expectedString = "Используйте допустимые значения пола животного - самец или самка";
+            String expectedString = "Используйте допустимые значения пола животного - самей или самка";
             assertEquals(expectedString, e.getMessage());
         }
     }
@@ -53,22 +53,13 @@ public class LionTest {
 
     @Test
     public void getFoodTest() throws Exception {
-        Lion lion = new Lion("Самец", feline);
-        List<String> expectedMeat = feline.getFood("Хищник");
+        Lion lion = new Lion("Самец");
+        List<String> expectedMeat = lion.getFood("Хищник");
         List<String> actualMeat = lion.getFood();
         assertEquals(expectedMeat, actualMeat);
     }
-
-
-
-    @Test
-    public void testReturnGetKittenForLion() throws Exception {
-        Lion lion = new Lion ("Самец", feline);
-        lion.getKittens();
-        // проверяем, что в рамках метода lion.getKittens() вызвался feline.getKittens()
-        Mockito.verify(feline).getKittens();
-    }
-
-
-
 }
+
+
+
+
