@@ -1,4 +1,3 @@
-import com.example.Animal;
 import com.example.Feline;
 import com.example.Lion;
 import org.junit.Rule;
@@ -11,7 +10,7 @@ import org.mockito.junit.MockitoJUnitRunner;
 
 import java.util.List;
 
-import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.*;
 
 @RunWith(MockitoJUnitRunner.class)
 public class LionTest {
@@ -22,17 +21,17 @@ public class LionTest {
     @Test
     public void doesManeTest() throws Exception {
         Lion lion = new Lion("Самец", feline);
-        boolean expectedMane = true;
+//        boolean expectedMane = true;
         boolean actualMane = lion.doesHaveMane();
-        assertEquals(expectedMane, actualMane);
+        assertTrue(actualMane);
     }
 
     @Test
     public void doesNotManeTest() throws Exception {
         Lion lion = new Lion("Самка", feline);
-        boolean expectedMane = false;
+//        boolean expectedMane = false;
         boolean actualMane = lion.doesHaveMane();
-        assertEquals(expectedMane, actualMane);
+        assertFalse(actualMane);
     }
 
 //    // Проверка, что выбрасывается исключение
@@ -63,26 +62,31 @@ public class LionTest {
         Lion lion = new Lion("Оно", feline);
     }
 
+//    @Test
+//    public void getKittensTest() throws Exception {
+//        thrown.expect(StackOverflowError.class);
+//        Lion lion = new Lion("Самец", feline);
+//        lion.getKittens();
+//    }
+
     @Test
     public void getKittensTest() throws Exception {
-        thrown.expect(StackOverflowError.class);
         Lion lion = new Lion("Самец", feline);
-        lion.getKittens();
+        int kittensCount = 1;
+        Integer expectedResult = kittensCount;
+        Mockito.when(feline.getKittens()).thenReturn(kittensCount);
+        Integer actual = lion.getKittens();
+        assertEquals(expectedResult, actual);
     }
 
     @Test
     public void getFoodTest() throws Exception {
         Lion lion = new Lion("Самец", feline);
-        List<String> animal = List.of("Животные", "Птицы", "Рыба");
-        Mockito.when(feline.getFood("Хищник")).thenReturn(animal);
+        List<String> expectedResult = List.of("Животные", "Птицы", "Рыба");
+        Mockito.when(feline.getFood("Хищник")).thenReturn(expectedResult);
         List<String> actualMeat = lion.getFood();
-        List<String> expectedMeat = animal;
-        assertEquals(expectedMeat, actualMeat);
+        assertEquals(expectedResult, actualMeat);
     }
 
 
 }
-
-
-
-

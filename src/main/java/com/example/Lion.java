@@ -18,7 +18,7 @@ public class Lion {
     }
 
     public int getKittens() {
-        return getKittens();
+        return feline.getKittens();
     }
 
 
